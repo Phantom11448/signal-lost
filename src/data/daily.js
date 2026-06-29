@@ -1,10 +1,10 @@
-﻿import { stripContentPunctuation } from '../constants/feedback.js';
+import { stripContentPunctuation } from '../constants/feedback.js';
 
-// â”€â”€ DAILY CHALLENGE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── DAILY CHALLENGE ───────────────────────────────────────────
 const DAILY = {
-  instruction: "âš¡ Daily Transmission: Write a paragraph that says: Hello Earth!",
+  instruction: "⚡ Daily Transmission: Write a paragraph that says: Hello Earth!",
   hint1: "Use the <p> tag for regular text",
-  hint2: "<p>â€¦your textâ€¦</p>",
+  hint2: "<p>…your text…</p>",
   hint3: "<p>Hello Earth!</p>",
   xp: 50,
   smartCheck: (v) => {

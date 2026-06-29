@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { TAG_REFERENCE } from '../data/tagReference.js';
@@ -25,10 +25,10 @@ function TagReferenceModal({ onClose }) {
             <div style={{ color: C.accent, fontSize: 10, letterSpacing: 3, textTransform: "uppercase", fontFamily: FONTS.mono }}>Quick Reference</div>
             <div style={{ color: C.textPrimary, fontWeight: 800, fontSize: 17, fontFamily: FONTS.heading, letterSpacing: 1 }}>HTML TAG CHEAT SHEET</div>
           </div>
-          <button onClick={onClose} style={{ background: C.card, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "5px 12px", cursor: "pointer", fontSize: 13 }}>âœ•</button>
+          <button onClick={onClose} style={{ background: C.card, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "5px 12px", cursor: "pointer", fontSize: 13 }}>✕</button>
         </div>
 
-        {/* category tabs â€” scrollable */}
+        {/* category tabs — scrollable */}
         <div style={{ display: "flex", gap: 6, padding: "10px 16px", overflowX: "auto", borderBottom: `1px solid ${C.border}`, flexShrink: 0 }}>
           {TAG_REFERENCE.map((c, i) => (
             <button key={i} onClick={() => setActiveCategory(i)} style={{
@@ -61,7 +61,7 @@ function TagReferenceModal({ onClose }) {
         </div>
 
         <div style={{ padding: "10px 16px", borderTop: `1px solid ${C.border}`, textAlign: "center" }}>
-          <p style={{ color: C.textMuted, fontSize: 11, margin: 0 }}>~30 tags cover 95% of all webpages ever written ðŸ›¸</p>
+          <p style={{ color: C.textMuted, fontSize: 11, margin: 0 }}>~30 tags cover 95% of all webpages ever written 🛸</p>
         </div>
       </div>
     </div>

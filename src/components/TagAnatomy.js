@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { CodeModal } from './CodeModal.js';
@@ -31,7 +31,7 @@ function TagAnatomy({ parts, slideKey }) {
           background: C.surface, border: `1px solid ${C.accent}44`,
           color: C.accent, borderRadius: 5, padding: "2px 7px",
           fontSize: 10, cursor: "pointer", letterSpacing: 1,
-        }}>â›¶ FULL</button>
+        }}>⛶ FULL</button>
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         {parts.map((p, i) => (
@@ -46,7 +46,7 @@ function TagAnatomy({ parts, slideKey }) {
           </div>
         ))}
       </div>
-      <p style={{ color: C.textMuted, fontSize: 11, marginTop: 6 }}>ðŸ‘¾ tap any part to scan it</p>
+      <p style={{ color: C.textMuted, fontSize: 11, marginTop: 6 }}>👾 tap any part to scan it</p>
       {showModal && <CodeModal code={plainCode} onClose={() => setShowModal(false)} />}
     </div>
   );

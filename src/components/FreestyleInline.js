@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { FREESTYLE_TEMPLATES } from '../data/freestyleTemplates.js';
@@ -70,7 +70,7 @@ function FreestyleInline() {
         placeholder="// type your HTML here..."
         style={{ width: "100%", boxSizing: "border-box", height: 200, background: C.tagBg, color: C.tagText, border: `1px solid ${C.accent}44`, borderRadius: 10, padding: "12px 14px", fontFamily: FONTS.mono, fontSize: 13, resize: "vertical", outline: "none", lineHeight: 1.7, marginBottom: 12 }} />
       {/* preview */}
-      <p style={{ color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, margin: "0 0 6px", fontFamily: FONTS.mono }}>ðŸ“¡ Live preview:</p>
+      <p style={{ color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, margin: "0 0 6px", fontFamily: FONTS.mono }}>📡 Live preview:</p>
       <iframe ref={iframeRef} title="freestyle" style={{ width: "100%", height: 280, border: `1px solid ${C.accent}44`, borderRadius: 10, background: "#f8fff4" }} sandbox="allow-same-origin" />
     </div>
   );

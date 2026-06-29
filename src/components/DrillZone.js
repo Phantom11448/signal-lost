@@ -1,11 +1,11 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { ALIEN_BULLETS } from '../constants/feedback.js';
 import { DRILLS, MIN_DRILLS } from '../data/drills.js';
 import { LivePreview } from './LivePreview.js';
 
-// â”€â”€ DRILL ZONE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── DRILL ZONE ────────────────────────────────────────────────
 function DrillZone({ challengeId, onReady }) {
   const drills = DRILLS[challengeId] || [];
   const [current, setCurrent] = useState(0);
@@ -45,7 +45,7 @@ function DrillZone({ challengeId, onReady }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <div>
           <div style={{ color: C.alien, fontSize: 15, fontWeight: 800, letterSpacing: 2, fontFamily: FONTS.heading }}>OPTIONAL</div>
-          <div style={{ color: C.accent, fontSize: 10, textTransform: "uppercase", letterSpacing: 2, marginTop: 2 }}>ðŸ” Extra Practice â€” do as many as you like</div>
+          <div style={{ color: C.accent, fontSize: 10, textTransform: "uppercase", letterSpacing: 2, marginTop: 2 }}>🔁 Extra Practice — do as many as you like</div>
         </div>
         <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
           {Array.from({ length: MIN_DRILLS }).map((_, i) => (
@@ -111,7 +111,7 @@ function DrillZone({ challengeId, onReady }) {
               setTimeout(() => { e.target.selectionStart = e.target.selectionEnd = start + 2; }, 0);
             }
           }}
-          placeholder="// practice hereâ€¦"
+          placeholder="// practice here…"
           disabled={status === "pass"}
           style={{
             width: "100%", boxSizing: "border-box", height: 68,
@@ -129,7 +129,7 @@ function DrillZone({ challengeId, onReady }) {
 
       {status === "fail" && (
         <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
-          <p style={{ color: C.red, margin: 0, fontSize: 13, flex: 1 }}>âŒ Not quite â€” check your tag and content</p>
+          <p style={{ color: C.red, margin: 0, fontSize: 13, flex: 1 }}>❌ Not quite — check your tag and content</p>
           <button onClick={() => setShowAnswer(true)} style={{ background: "transparent", border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 6, padding: "3px 10px", fontSize: 11, cursor: "pointer", whiteSpace: "nowrap" }}>Show answer</button>
         </div>
       )}
@@ -142,14 +142,14 @@ function DrillZone({ challengeId, onReady }) {
 
       {status === "pass" ? (
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <p style={{ color: C.alien, margin: 0, fontWeight: 700, fontSize: 13 }}>âœ“ Nice work! +1 rep</p>
+          <p style={{ color: C.alien, margin: 0, fontWeight: 700, fontSize: 13 }}>✓ Nice work! +1 rep</p>
           <button onClick={next} style={{ background: C.accent, color: C.bg, border: "none", borderRadius: 7, padding: "6px 16px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
-            {current + 1 < drills.length ? "Next drill â†’" : "Again â†’"}
+            {current + 1 < drills.length ? "Next drill →" : "Again →"}
           </button>
         </div>
       ) : (
         <button onClick={check} style={{ background: C.accent, color: C.bg, border: "none", borderRadius: 8, padding: "7px 18px", fontWeight: 800, fontSize: 12, cursor: "pointer", letterSpacing: 1, fontFamily: FONTS.heading }}>
-          TRANSMIT â–¶
+          TRANSMIT ▶
         </button>
       )}
 
@@ -175,7 +175,7 @@ function DrillZone({ challengeId, onReady }) {
             transition: "all 0.4s",
             boxShadow: reps >= MIN_DRILLS ? C.glowAlien : "none",
           }}>
-          {reps >= MIN_DRILLS ? "FEELING CONFIDENT â†’ NEXT CONCEPT ðŸ›¸" : "SKIP DRILLS â†’ NEXT CONCEPT â†’"}
+          {reps >= MIN_DRILLS ? "FEELING CONFIDENT → NEXT CONCEPT 🛸" : "SKIP DRILLS → NEXT CONCEPT →"}
         </button>
       </div>
     </div>

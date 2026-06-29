@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { C } from '../constants/colors.js';
 
 function SignalBar({ current, max }) {

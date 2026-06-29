@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 function Stars() {
   const stars = Array.from({ length: 60 }, (_, i) => ({

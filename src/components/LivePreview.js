@@ -1,4 +1,4 @@
-﻿import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { C } from '../constants/colors.js';
 
 function LivePreview({ html }) {
@@ -28,7 +28,7 @@ function LivePreview({ html }) {
   }, [html]);
   return (
     <div>
-      <p style={{ margin: "0 0 6px", color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2 }}>ðŸ“¡ Transmission Preview</p>
+      <p style={{ margin: "0 0 6px", color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2 }}>📡 Transmission Preview</p>
       <iframe ref={iframeRef} title="preview" style={{ width: "100%", height: 130, border: `1px solid ${C.accent}44`, borderRadius: 8, background: "#f0fff8" }} sandbox="allow-same-origin" />
     </div>
   );

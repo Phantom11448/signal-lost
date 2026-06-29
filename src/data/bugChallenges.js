@@ -1,22 +1,22 @@
-﻿import { stripContentPunctuation } from '../constants/feedback.js';
+import { stripContentPunctuation } from '../constants/feedback.js';
 
-// â”€â”€ BUG IN THE SYSTEM CHALLENGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── BUG IN THE SYSTEM CHALLENGES ─────────────────────────────
 const BUG_CHALLENGES = [
   {
     id: "bug1",
     number: 1,
     title: "Bug in the System #1",
-    subtitle: "Missions 1 â€” 3",
+    subtitle: "Missions 1 — 3",
     unlocksAfter: [1, 2, 3], // mission IDs that must be complete
     xp: 150,
     instruction: [
-      "ðŸ›¸ System corruption detected â€” full diagnostic required!",
+      "🛸 System corruption detected — full diagnostic required!",
       "Write an h1 that says: My Alien Page",
       "Write a paragraph that says: I crashed on Earth",
       "Write an unordered list with two items: Need food and Need fuel",
       "Write a button that says: Send Help",
     ],
-    hint1: "You need four separate tags â€” h1, p, ul with two li items, and a button",
+    hint1: "You need four separate tags — h1, p, ul with two li items, and a button",
     hint2: "<h1>...</h1>  <p>...</p>  <ul><li>...</li><li>...</li></ul>  <button>...</button>",
     hint3: "<h1>My Alien Page</h1><p>I crashed on Earth</p><ul><li>Need food</li><li>Need fuel</li></ul><button>Send Help</button>",
     walkthrough: [
@@ -47,11 +47,11 @@ const BUG_CHALLENGES = [
     id: "bug2",
     number: 2,
     title: "Bug in the System #2",
-    subtitle: "Missions 1 â€” 6",
+    subtitle: "Missions 1 — 6",
     unlocksAfter: [1, 2, 3, 4, 5, 6],
     xp: 200,
     instruction: [
-      "ðŸ›¸ Multiple systems corrupted â€” rebuild the distress page!",
+      "🛸 Multiple systems corrupted — rebuild the distress page!",
       "Write a <header> with an h1 that says: Distress Signal",
       "Write a <main> containing a paragraph with the word: URGENT in bold",
       "After the paragraph add a <br> then write: All crew accounted for in italic",
@@ -59,7 +59,7 @@ const BUG_CHALLENGES = [
       "Add a link to https://earth.com that says: Contact Earth",
       "Write a <footer> with a paragraph that says: Transmission from Sector 7",
     ],
-    hint1: "header, main with content, then footer â€” semantic layout wrapping everything",
+    hint1: "header, main with content, then footer — semantic layout wrapping everything",
     hint2: "<header><h1>Distress Signal</h1></header><main><p><strong>URGENT</strong><br><em>All crew accounted for</em></p><ul><li>Fuel depleted</li><li>Engine offline</li></ul><a href='https://earth.com'>Contact Earth</a></main><footer><p>Transmission from Sector 7</p></footer>",
     hint3: "<header><h1>Distress Signal</h1></header><main><p><strong>URGENT</strong><br><em>All crew accounted for</em></p><ul><li>Fuel depleted</li><li>Engine offline</li></ul><a href='https://earth.com'>Contact Earth</a></main><footer><p>Transmission from Sector 7</p></footer>",
     walkthrough: [
@@ -95,21 +95,21 @@ const BUG_CHALLENGES = [
     id: "bug3",
     number: 3,
     title: "Bug in the System #3",
-    subtitle: "Missions 1 â€” 9",
+    subtitle: "Missions 1 — 9",
     unlocksAfter: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     xp: 250,
     instruction: [
-      "ðŸ›¸ Critical system failure â€” rebuild the full crew manifest!",
+      "🛸 Critical system failure — rebuild the full crew manifest!",
       "Write a <header> with an h1 that says: Crew Manifest",
       "Write a <main> containing an <article> with an h2 that says: Active Crew",
       "Inside the article add a table with headers: Name and Status",
       "Add two data rows: Commander Zyx / Active and Engineer Blorp / MIA",
       "After the article add an <aside> with a paragraph that says: Last updated: Stardate 2026",
       "Write a <form> with a label for name that says: Your Name and an input with id name and type text and a submit button that says: Join Crew",
-      "Write a <footer> with a paragraph that says: Signal Lost â€” Sector 7",
+      "Write a <footer> with a paragraph that says: Signal Lost — Sector 7",
     ],
-    hint1: "This one is long â€” take it section by section. Header, then main with article and aside, then form, then footer",
-    hint2: "Build it piece by piece â€” header first, then main, then form, then footer",
+    hint1: "This one is long — take it section by section. Header, then main with article and aside, then form, then footer",
+    hint2: "Build it piece by piece — header first, then main, then form, then footer",
     hint3: "Check the walkthrough for the full answer",
     walkthrough: [
       "Write: <header><h1>Crew Manifest</h1></header>",
@@ -120,7 +120,7 @@ const BUG_CHALLENGES = [
       "Add aside: <aside><p>Last updated: Stardate 2026</p></aside>",
       "Close main: </main>",
       "Write form: <form><label for='name'>Your Name</label><input id='name' type='text'><button>Join Crew</button></form>",
-      "Write footer: <footer><p>Signal Lost â€” Sector 7</p></footer>",
+      "Write footer: <footer><p>Signal Lost — Sector 7</p></footer>",
     ],
     smartCheck: (v) => {
       const n = stripContentPunctuation(v.toLowerCase());

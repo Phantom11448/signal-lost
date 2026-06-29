@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { Stars } from './Stars.js';
@@ -20,7 +20,7 @@ function FullCheatSheet({ onClose }) {
       <div style={{ position: "relative", zIndex: 1, padding: "20px 16px 48px", maxWidth: 580, margin: "0 auto", boxSizing: "border-box", color: C.textPrimary }}>
         {/* header */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-          <button onClick={onClose} style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontSize: 13 }}>â† Ship</button>
+          <button onClick={onClose} style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontSize: 13 }}>← Ship</button>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 10, color: C.accent, textTransform: "uppercase", letterSpacing: 3, fontFamily: FONTS.mono }}>Transmission Codex</div>
             <div style={{ fontWeight: 700, fontSize: 17, fontFamily: FONTS.heading, color: C.accent, letterSpacing: 1 }}>FULL CHEAT SHEET</div>
@@ -31,7 +31,7 @@ function FullCheatSheet({ onClose }) {
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="ðŸ” Search tags, attributes, anything..."
+          placeholder="🔍 Search tags, attributes, anything..."
           style={{
             width: "100%", boxSizing: "border-box",
             background: C.card, color: C.textPrimary,
@@ -85,7 +85,7 @@ function FullCheatSheet({ onClose }) {
         </div>
 
         <p style={{ color: C.textMuted, fontSize: 11, textAlign: "center", marginTop: 16 }}>
-          ~30 tags cover 95% of all webpages ever written ðŸ›¸
+          ~30 tags cover 95% of all webpages ever written 🛸
         </p>
       </div>
     </div>

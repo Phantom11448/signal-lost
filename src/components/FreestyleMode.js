@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { Stars } from './Stars.js';
@@ -50,7 +50,7 @@ function FreestyleMode({ onClose }) {
       <div style={{ position: "relative", zIndex: 1, padding: "20px 16px 40px", maxWidth: 580, margin: "0 auto", boxSizing: "border-box", color: C.textPrimary }}>
         {/* header */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-          <button onClick={onClose} style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontSize: 13 }}>â† Ship</button>
+          <button onClick={onClose} style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontSize: 13 }}>← Ship</button>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 10, color: C.accent, textTransform: "uppercase", letterSpacing: 3, fontFamily: FONTS.mono }}>Open Channel</div>
             <div style={{ fontWeight: 700, fontSize: 17, fontFamily: FONTS.heading, color: C.alien, letterSpacing: 1 }}>FREE TRANSMISSION</div>
@@ -58,7 +58,7 @@ function FreestyleMode({ onClose }) {
         </div>
 
         <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 16, lineHeight: 1.6 }}>
-          No rules. No challenges. Just code whatever you want and see it appear live. ðŸ›¸
+          No rules. No challenges. Just code whatever you want and see it appear live. 🛸
         </p>
 
         {/* template picker */}
@@ -107,7 +107,7 @@ function FreestyleMode({ onClose }) {
 
         {/* live preview */}
         <div>
-          <p style={{ color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, margin: "0 0 6px", fontFamily: FONTS.mono }}>ðŸ“¡ Live transmission preview:</p>
+          <p style={{ color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, margin: "0 0 6px", fontFamily: FONTS.mono }}>📡 Live transmission preview:</p>
           <iframe ref={iframeRef} title="freestyle-preview" style={{
             width: "100%", height: 320, border: `1px solid ${C.accent}44`,
             borderRadius: 10, background: "#f8fff4",

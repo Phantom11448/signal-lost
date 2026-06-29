@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { CodeModal } from './CodeModal.js';
@@ -48,7 +48,7 @@ function InteractiveCodeBlock({ code }) {
   return (
     <div style={{ margin: "16px 0" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-        <span style={{ color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, fontFamily: FONTS.mono }}>ðŸ›¸ Live Schematic â€” edit and see it change</span>
+        <span style={{ color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, fontFamily: FONTS.mono }}>🛸 Live Schematic — edit and see it change</span>
         <button onClick={() => setEditableCode(code)} style={{ background: "transparent", border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 6, padding: "2px 8px", fontSize: 11, cursor: "pointer" }}>Reset</button>
       </div>
 
@@ -83,12 +83,12 @@ function InteractiveCodeBlock({ code }) {
             background: C.surface, border: `1px solid ${C.accent}44`,
             color: C.accent, borderRadius: 5, padding: "2px 7px",
             fontSize: 10, cursor: "pointer", letterSpacing: 1,
-          }}>â›¶ FULL</button>
+          }}>⛶ FULL</button>
         </div>
 
         {/* live preview */}
         <div style={{ flex: 1 }}>
-          <p style={{ color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, margin: "0 0 6px", fontFamily: FONTS.mono }}>ðŸ“¡ Transmission Preview</p>
+          <p style={{ color: C.accent, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, margin: "0 0 6px", fontFamily: FONTS.mono }}>📡 Transmission Preview</p>
           <iframe ref={iframeRef} title="interactive-preview" style={{
             width: "100%", height: isWide ? 260 : 200,
             border: `1px solid ${C.accent}44`,

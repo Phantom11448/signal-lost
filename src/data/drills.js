@@ -1,4 +1,4 @@
-﻿// ── DRILL VARIATIONS ─────────────────────────────────────────
+// ── DRILL VARIATIONS ─────────────────────────────────────────
 // Each mini challenge concept gets extra practice reps with different content
 const DRILLS = {
   m1a: [ // tags concept — using h1 as example

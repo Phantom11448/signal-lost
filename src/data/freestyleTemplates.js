@@ -1,4 +1,4 @@
-﻿const FREESTYLE_TEMPLATES = [
+const FREESTYLE_TEMPLATES = [
   { label: "Blank", code: "" },
   { label: "Basic Page", code: `<!DOCTYPE html>\n<html>\n  <head>\n    <title>My Page</title>\n  </head>\n  <body>\n    <h1>Hello World</h1>\n    <p>Start coding here...</p>\n  </body>\n</html>` },
   { label: "Form", code: `<form>\n  <label for="name">Name:</label>\n  <input id="name" type="text" placeholder="Your name">\n\n  <label for="email">Email:</label>\n  <input id="email" type="email" placeholder="Your email">\n\n  <button type="submit">Submit</button>\n</form>` },

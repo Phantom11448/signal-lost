@@ -1,7 +1,7 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
-import { FEEDBACK, ALIEN_BULLETS } from '../constants/feedback.js';
+import { ALIEN_BULLETS, FEEDBACK } from '../constants/feedback.js';
 import { LivePreview } from './LivePreview.js';
 
 function BugChallengeCard({ bug, onPass, alreadyDone }) {
@@ -53,7 +53,7 @@ function BugChallengeCard({ bug, onPass, alreadyDone }) {
       {/* header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
         <div style={{ flex: 1 }}>
-          <div style={{ color: C.gold, fontSize: 10, textTransform: "uppercase", letterSpacing: 3, fontFamily: FONTS.mono, marginBottom: 4 }}>âš¡ {bug.subtitle}</div>
+          <div style={{ color: C.gold, fontSize: 10, textTransform: "uppercase", letterSpacing: 3, fontFamily: FONTS.mono, marginBottom: 4 }}>⚡ {bug.subtitle}</div>
           <div style={{ color: C.gold, fontWeight: 900, fontSize: 16, fontFamily: FONTS.heading, letterSpacing: 1, marginBottom: 10 }}>{bug.title}</div>
           {Array.isArray(bug.instruction) && bug.instruction.map((line, i) => {
             if (i === 0) return (
@@ -72,7 +72,7 @@ function BugChallengeCard({ bug, onPass, alreadyDone }) {
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6, marginLeft: 12, flexShrink: 0 }}>
           <span style={{ color: C.gold, fontSize: 12, fontWeight: 700, background: C.goldDim, padding: "2px 8px", borderRadius: 99 }}>+{bug.xp} SP</span>
           <button onClick={() => { setVal(""); setStatus("idle"); setFeedbackMsg(""); setAttempts(0); setShowWalkthrough(false); setWalkthroughStep(0); }}
-            style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: "50%", width: 26, height: 26, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", padding: 0 }}>â†º</button>
+            style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: "50%", width: 26, height: 26, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", padding: 0 }}>↺</button>
         </div>
       </div>
 
@@ -101,14 +101,14 @@ function BugChallengeCard({ bug, onPass, alreadyDone }) {
 
       {/* live preview */}
       <div style={{ marginBottom: 12 }}>
-        <p style={{ margin: "0 0 6px", color: C.gold, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, fontFamily: FONTS.mono }}>ðŸ“¡ Transmission Preview</p>
+        <p style={{ margin: "0 0 6px", color: C.gold, fontSize: 11, textTransform: "uppercase", letterSpacing: 2, fontFamily: FONTS.mono }}>📡 Transmission Preview</p>
         <LivePreview html={val} />
       </div>
 
       {/* tiny mistakes reminder */}
       {attempts >= 2 && status !== "pass" && (
         <div style={{ background: C.surface, border: `1px solid ${C.gold}33`, borderRadius: 8, padding: "8px 12px", marginBottom: 10 }}>
-          <p style={{ color: C.gold, margin: "0 0 4px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>âš ï¸ In code, ONE wrong character breaks everything</p>
+          <p style={{ color: C.gold, margin: "0 0 4px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>⚠️ In code, ONE wrong character breaks everything</p>
           <p style={{ color: C.textMuted, margin: 0, fontSize: 12, lineHeight: 1.5 }}>Check for: missing closing tags, wrong text, missing quotes around attributes</p>
         </div>
       )}
@@ -116,7 +116,7 @@ function BugChallengeCard({ bug, onPass, alreadyDone }) {
       {/* feedback */}
       {status === "fail" && feedbackMsg && (
         <div style={{ background: C.redDim, border: `1px solid ${C.red}44`, borderRadius: 8, padding: "8px 12px", marginBottom: 10 }}>
-          <p style={{ color: C.red, margin: 0, fontSize: 13 }}>âŒ {feedbackMsg}</p>
+          <p style={{ color: C.red, margin: 0, fontSize: 13 }}>❌ {feedbackMsg}</p>
         </div>
       )}
 
@@ -124,7 +124,7 @@ function BugChallengeCard({ bug, onPass, alreadyDone }) {
       {hint && status !== "pass" && (
         <div style={{ background: C.goldDim, border: `1px solid ${C.gold}44`, borderRadius: 8, padding: "8px 12px", marginBottom: 10 }}>
           <p style={{ color: C.gold, margin: 0, fontSize: 13 }}>
-            ðŸ“¡ {attempts === 1 ? "Signal Nudge" : attempts === 2 ? "Hint Beam" : "Full Transmission"}: {hint}
+            📡 {attempts === 1 ? "Signal Nudge" : attempts === 2 ? "Hint Beam" : "Full Transmission"}: {hint}
           </p>
         </div>
       )}
@@ -133,7 +133,7 @@ function BugChallengeCard({ bug, onPass, alreadyDone }) {
       {attempts >= 2 && status !== "pass" && !showWalkthrough && (
         <button onClick={() => { setShowWalkthrough(true); setWalkthroughStep(0); }}
           style={{ background: "transparent", border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 14px", fontSize: 12, cursor: "pointer", marginBottom: 10, display: "block" }}>
-          ðŸ†˜ Lost in space â€” walk me through it
+          🆘 Lost in space — walk me through it
         </button>
       )}
 
@@ -144,14 +144,14 @@ function BugChallengeCard({ bug, onPass, alreadyDone }) {
           <div style={{ display: "flex", gap: 8 }}>
             {walkthroughStep > 0 && (
               <button onClick={() => setWalkthroughStep((s) => s - 1)}
-                style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 7, padding: "5px 12px", fontSize: 12, cursor: "pointer" }}>â† Back</button>
+                style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 7, padding: "5px 12px", fontSize: 12, cursor: "pointer" }}>← Back</button>
             )}
             {walkthroughStep < bug.walkthrough.length - 1 ? (
               <button onClick={() => setWalkthroughStep((s) => s + 1)}
-                style={{ background: C.gold, color: C.bg, border: "none", borderRadius: 7, padding: "5px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Next â†’</button>
+                style={{ background: C.gold, color: C.bg, border: "none", borderRadius: 7, padding: "5px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Next →</button>
             ) : (
               <button onClick={() => setShowWalkthrough(false)}
-                style={{ background: C.alien, color: C.bg, border: "none", borderRadius: 7, padding: "5px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Got it! ðŸ’ª</button>
+                style={{ background: C.alien, color: C.bg, border: "none", borderRadius: 7, padding: "5px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Got it! 💪</button>
             )}
           </div>
         </div>
@@ -159,13 +159,13 @@ function BugChallengeCard({ bug, onPass, alreadyDone }) {
 
       {status === "pass" ? (
         <div style={{ textAlign: "center", padding: "12px 0" }}>
-          <div style={{ fontSize: 36, marginBottom: 6 }}>ðŸ›âš¡</div>
+          <div style={{ fontSize: 36, marginBottom: 6 }}>🐛⚡</div>
           <p style={{ color: C.alien, margin: 0, fontWeight: 800, fontSize: 15, fontFamily: FONTS.heading, letterSpacing: 1 }}>BUG CRUSHED!</p>
           <p style={{ color: C.textMuted, margin: "4px 0 0", fontSize: 12 }}>+{bug.xp} Signal Power earned</p>
         </div>
       ) : (
         <button onClick={check} style={{ background: C.gold, color: C.bg, border: "none", borderRadius: 8, padding: "10px 24px", fontWeight: 800, fontSize: 12, cursor: "pointer", letterSpacing: 2, fontFamily: FONTS.heading }}>
-          TRANSMIT â–¶
+          TRANSMIT ▶
         </button>
       )}
     </div>

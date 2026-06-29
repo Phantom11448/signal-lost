@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { C } from './constants/colors.js';
 import { FONTS } from './constants/fonts.js';
 import { ALIEN_BULLETS } from './constants/feedback.js';
@@ -18,6 +18,7 @@ import { Museum } from './components/Museum.js';
 import { FreestyleInline } from './components/FreestyleInline.js';
 import { CodexInline } from './components/CodexInline.js';
 import { MuseumInline } from './components/MuseumInline.js';
+
 export default function SignalLost() {
   const [screen, setScreen] = useState("home");
   const [activeLevel, setActiveLevel] = useState(null);
@@ -38,7 +39,7 @@ export default function SignalLost() {
   const [activeTab, setActiveTab] = useState("missions");
   const [loaded, setLoaded] = useState(false);
 
-  // â”€â”€ LOAD saved progress on mount â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── LOAD saved progress on mount ─────────────────────────────
   useEffect(() => {
     const load = async () => {
       try {
@@ -52,14 +53,14 @@ export default function SignalLost() {
           if (saved.passedBugs) setPassedBugs(saved.passedBugs);
         }
       } catch (e) {
-        // no saved data yet â€” start fresh
+        // no saved data yet — start fresh
       }
       setLoaded(true);
     };
     load();
   }, []);
 
-  // â”€â”€ SAVE progress whenever key state changes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── SAVE progress whenever key state changes ──────────────────
   useEffect(() => {
     if (!loaded) return;
     const save = async () => {
@@ -122,7 +123,7 @@ export default function SignalLost() {
     }
   }, [passedChallenges, theoryDone, mission, missionComplete, shipParts]);
 
-  // ALL hooks done â€” now safe to do conditional renders
+  // ALL hooks done — now safe to do conditional renders
   if (!loaded) {
     return (
       <div style={{ minHeight: "100vh", background: "#020b18", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -142,9 +143,9 @@ export default function SignalLost() {
       <Stars />
       <div style={{ position: "relative", zIndex: 1, padding: "20px 16px 60px", maxWidth: 580, margin: "0 auto", boxSizing: "border-box", color: C.textPrimary }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-          <button onClick={() => setActiveBug(null)} style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontSize: 13 }}>â† Ship</button>
+          <button onClick={() => setActiveBug(null)} style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontSize: 13 }}>← Ship</button>
           <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 10, color: C.red, textTransform: "uppercase", letterSpacing: 2, fontFamily: FONTS.mono }}>âš¡ {activeBug.subtitle}</div>
+            <div style={{ fontSize: 10, color: C.red, textTransform: "uppercase", letterSpacing: 2, fontFamily: FONTS.mono }}>⚡ {activeBug.subtitle}</div>
             <div style={{ fontWeight: 700, fontSize: 16, color: C.textPrimary, fontFamily: FONTS.heading, letterSpacing: 1 }}>{activeBug.title}</div>
           </div>
           <div style={{ color: C.gold, fontWeight: 800, fontSize: 14, background: C.goldDim, padding: "3px 10px", borderRadius: 99 }}>+{activeBug.xp} SP</div>
@@ -162,7 +163,7 @@ export default function SignalLost() {
         />
         {passedBugs[activeBug.id] && (
           <button onClick={() => setActiveBug(null)} style={{ background: C.alien, color: C.bg, border: "none", borderRadius: 8, padding: "10px 28px", fontWeight: 800, fontSize: 11, cursor: "pointer", letterSpacing: 2, fontFamily: FONTS.heading, boxShadow: C.glowAlien, display: "block", margin: "0 auto" }}>
-            RETURN TO SHIP â†’
+            RETURN TO SHIP →
           </button>
         )}
       </div>
@@ -176,7 +177,7 @@ export default function SignalLost() {
     const allSlidesDone = mission.theory.every(s => !s.miniChallenge || passedChallenges[s.miniChallenge.id]);
     // canAdvance requires both mini challenge passed AND drill zone completed (or no drills exist)
     const hasDrills = currentSlide?.miniChallenge && (DRILLS[currentSlide.miniChallenge.id]?.length > 0);
-    // canAdvance only needs miniDone â€” drills are optional
+    // canAdvance only needs miniDone — drills are optional
     const canAdvance = !currentSlide?.miniChallenge || miniDone;
 
     return (
@@ -185,19 +186,19 @@ export default function SignalLost() {
         <div id="level-top" style={{ position: "relative", zIndex: 1, padding: "20px 16px 60px", maxWidth: 580, margin: "0 auto", boxSizing: "border-box", color: C.textPrimary }}>
           {/* header */}
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-            <button onClick={() => setScreen("home")} style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontSize: 13, whiteSpace: "nowrap" }}>â† Ship</button>
+            <button onClick={() => setScreen("home")} style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 12px", cursor: "pointer", fontSize: 13, whiteSpace: "nowrap" }}>← Ship</button>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 10, color: C.accent, textTransform: "uppercase", letterSpacing: 2 }}>Mission {mission.id} â€” {mission.shipPart}</div>
+              <div style={{ fontSize: 10, color: C.accent, textTransform: "uppercase", letterSpacing: 2 }}>Mission {mission.id} — {mission.shipPart}</div>
               <div style={{ fontWeight: 700, fontSize: 16, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: C.textPrimary }}>{mission.title}</div>
             </div>
-            <button onClick={() => setShowRef(true)} style={{ background: C.card, border: `1px solid ${C.accent}44`, color: C.accent, borderRadius: 8, padding: "6px 10px", cursor: "pointer", fontSize: 11, whiteSpace: "nowrap", fontFamily: FONTS.mono }}>ðŸ“‹ Tags</button>
+            <button onClick={() => setShowRef(true)} style={{ background: C.card, border: `1px solid ${C.accent}44`, color: C.accent, borderRadius: 8, padding: "6px 10px", cursor: "pointer", fontSize: 11, whiteSpace: "nowrap", fontFamily: FONTS.mono }}>📋 Tags</button>
             <div style={{ color: C.gold, fontWeight: 800, fontSize: 14, whiteSpace: "nowrap", background: C.goldDim, padding: "3px 10px", borderRadius: 99 }}>+{earnedSP} SP</div>
           </div>
           {showRef && <TagReferenceModal onClose={() => setShowRef(false)} />}
 
           {/* story intro */}
           <div style={{ background: C.accentDim, border: `1px solid ${C.accent}44`, borderRadius: 10, padding: "10px 14px", marginBottom: 20 }}>
-            <p style={{ color: C.accent, margin: 0, fontSize: 13, lineHeight: 1.6 }}>ðŸ‘¾ {mission.storyIntro}</p>
+            <p style={{ color: C.accent, margin: 0, fontSize: 13, lineHeight: 1.6 }}>👾 {mission.storyIntro}</p>
           </div>
 
           {!theoryDone ? (
@@ -210,12 +211,12 @@ export default function SignalLost() {
                 <TheorySlide slide={currentSlide} slideKey={`${activeLevel}-${theoryStep}`} />
               </div>
 
-              {/* mini challenge â€” shown right below the theory */}
+              {/* mini challenge — shown right below the theory */}
               {currentSlide.miniChallenge && (
                 <div style={{ marginBottom: 16 }}>
                   <div style={{ marginBottom: 8 }}>
                     <div style={{ color: C.red, fontSize: 15, fontWeight: 800, letterSpacing: 2, fontFamily: FONTS.heading }}>REQUIRED REPAIR</div>
-                    <div style={{ color: C.accent, fontSize: 10, textTransform: "uppercase", letterSpacing: 2, marginTop: 2 }}>âš¡ Complete this to advance</div>
+                    <div style={{ color: C.accent, fontSize: 10, textTransform: "uppercase", letterSpacing: 2, marginTop: 2 }}>⚡ Complete this to advance</div>
                   </div>
                   <ChallengeCard
                     key={currentSlide.miniChallenge.id}
@@ -247,12 +248,12 @@ export default function SignalLost() {
                 </div>
               )}
 
-              {/* nav buttons â€” Next only unlocks after drill is ready */}
+              {/* nav buttons — Next only unlocks after drill is ready */}
               <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
                 <button onClick={() => { const s = Math.max(0, theoryStep - 1); theoryStepRef.current = s; setTheoryStep(s); setDrillReady(false); scrollToTop(); }}
                   disabled={theoryStep === 0}
                   style={{ background: theoryStep === 0 ? C.border : C.surface, color: theoryStep === 0 ? C.textMuted : C.textPrimary, border: `1px solid ${C.border}`, borderRadius: 8, padding: "8px 16px", cursor: theoryStep === 0 ? "default" : "pointer", fontSize: 13 }}>
-                  â† Prev
+                  ← Prev
                 </button>
                 {theoryStep < mission.theory.length - 1 ? (
                   <button
@@ -265,7 +266,7 @@ export default function SignalLost() {
                       fontWeight: 700, fontSize: 13, letterSpacing: 1,
                       transition: "all 0.2s",
                     }}>
-                    {canAdvance ? "NEXT â†’" : "Pass the challenge to continue"}
+                    {canAdvance ? "NEXT →" : "Pass the challenge to continue"}
                   </button>
                 ) : (
                   <button
@@ -279,7 +280,7 @@ export default function SignalLost() {
                       boxShadow: canAdvance ? C.glowAlien : "none",
                       fontFamily: FONTS.heading, transition: "all 0.2s",
                     }}>
-                    {canAdvance ? "FINAL REPAIR ðŸ›¸" : "Pass the challenge first"}
+                    {canAdvance ? "FINAL REPAIR 🛸" : "Pass the challenge first"}
                   </button>
                 )}
               </div>
@@ -288,7 +289,7 @@ export default function SignalLost() {
             <>
               <div style={{ background: C.goldDim, border: `1px solid ${C.gold}44`, borderRadius: 10, padding: "10px 14px", marginBottom: 16 }}>
                 <p style={{ color: C.gold, margin: 0, fontSize: 13, lineHeight: 1.6 }}>
-                  ðŸ† All concepts learned! Now for the final repair â€” this one combines everything from this mission.
+                  🏆 All concepts learned! Now for the final repair — this one combines everything from this mission.
                 </p>
               </div>
               <ChallengeCard
@@ -299,13 +300,13 @@ export default function SignalLost() {
               />
               {missionComplete && (
                 <div style={{ background: `linear-gradient(135deg, ${C.accent}18, ${C.alien}18)`, border: `2px solid ${C.alien}`, borderRadius: 14, padding: 24, textAlign: "center", marginTop: 8, boxShadow: C.glowAlien }}>
-                  <div style={{ fontSize: 52, marginBottom: 8 }}>ðŸ›¸</div>
+                  <div style={{ fontSize: 52, marginBottom: 8 }}>🛸</div>
                   <h2 style={{ margin: "0 0 6px", color: C.alien, fontSize: 20, fontFamily: FONTS.heading, letterSpacing: 1 }}>System Restored!</h2>
                   <p style={{ color: C.textMuted, margin: "0 0 16px", fontSize: 14 }}>
                     <strong style={{ color: C.gold }}>{mission.badgeName}</strong> {mission.badge} recovered and installed!
                   </p>
                   <button onClick={() => { setScreen("home"); window.scrollTo({ top: 0, behavior: "instant" }); }} style={{ background: C.alien, color: C.bg, border: "none", borderRadius: 8, padding: "10px 28px", fontWeight: 800, fontSize: 11, cursor: "pointer", letterSpacing: 2, boxShadow: C.glowAlien, fontFamily: FONTS.heading }}>
-                    RETURN TO SHIP â†’
+                    RETURN TO SHIP →
                   </button>
                 </div>
               )}
@@ -318,10 +319,10 @@ export default function SignalLost() {
 
   // HOME / SHIP DASHBOARD
   const TABS = [
-    { id: "missions", label: "Missions", icon: "ðŸ›¸" },
-    { id: "freestyle", label: "Freestyle", icon: "âš¡" },
-    { id: "codex", label: "Codex", icon: "ðŸ“¡" },
-    { id: "museum", label: "Museum", icon: "ðŸ›ï¸" },
+    { id: "missions", label: "Missions", icon: "🛸" },
+    { id: "freestyle", label: "Freestyle", icon: "⚡" },
+    { id: "codex", label: "Codex", icon: "📡" },
+    { id: "museum", label: "Museum", icon: "🏛️" },
   ];
 
   const renderTab = () => {
@@ -330,11 +331,11 @@ export default function SignalLost() {
       <div style={{ paddingBottom: 80 }}>
         {/* hero */}
         <div style={{ textAlign: "center", padding: "32px 16px 20px" }}>
-          <div style={{ color: C.accent, fontSize: 10, letterSpacing: 6, textTransform: "uppercase", marginBottom: 10, fontFamily: FONTS.mono }}>ðŸ›¸ Emergency Broadcast System</div>
+          <div style={{ color: C.accent, fontSize: 10, letterSpacing: 6, textTransform: "uppercase", marginBottom: 10, fontFamily: FONTS.mono }}>🛸 Emergency Broadcast System</div>
           <h1 style={{ fontFamily: FONTS.heading, fontSize: 48, fontWeight: 900, margin: "0 0 4px", letterSpacing: 8, lineHeight: 1.1, color: C.accent, textShadow: `0 0 20px ${C.accent}, 0 0 40px ${C.accent}88` }}>SIGNAL</h1>
           <h1 style={{ fontFamily: FONTS.heading, fontSize: 48, fontWeight: 900, margin: "0 0 16px", letterSpacing: 8, lineHeight: 1.1, color: C.alien, textShadow: `0 0 20px ${C.alien}, 0 0 40px ${C.alien}88` }}>LOST</h1>
           <p style={{ color: C.textMuted, fontSize: 14, margin: "0 auto 20px", maxWidth: 300, lineHeight: 1.6 }}>
-            Crash-landed near Earth. Learn HTML to repair your ship and send a distress signal home. ðŸ‘¾
+            Crash-landed near Earth. Learn HTML to repair your ship and send a distress signal home. 👾
           </p>
 
           {/* ship status */}
@@ -345,12 +346,12 @@ export default function SignalLost() {
             </div>
             <div style={{ width: 1, background: C.border }} />
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 20 }}>{shipParts.length > 0 ? shipParts.join(" ") : "â€”"}</div>
+              <div style={{ fontSize: 20 }}>{shipParts.length > 0 ? shipParts.join(" ") : "—"}</div>
               <div style={{ fontSize: 10, color: C.textMuted, textTransform: "uppercase", letterSpacing: 1 }}>Ship Parts</div>
             </div>
             <div style={{ width: 1, background: C.border }} />
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 20 }}>{allMissionsDone ? "ðŸŸ¢" : "ðŸ”´"}</div>
+              <div style={{ fontSize: 20 }}>{allMissionsDone ? "🟢" : "🔴"}</div>
               <div style={{ fontSize: 10, color: C.textMuted, textTransform: "uppercase", letterSpacing: 1 }}>Signal</div>
             </div>
           </div>
@@ -361,7 +362,7 @@ export default function SignalLost() {
           <DailyCard done={dailyDone} onComplete={handleDailyComplete} />
 
           {/* missions label */}
-          <div style={{ color: C.accent, fontSize: 10, textTransform: "uppercase", letterSpacing: 3, marginBottom: 12, fontFamily: FONTS.mono }}>â€” Ship Repair Missions â€”</div>
+          <div style={{ color: C.accent, fontSize: 10, textTransform: "uppercase", letterSpacing: 3, marginBottom: 12, fontFamily: FONTS.mono }}>— Ship Repair Missions —</div>
 
           {/* mission cards */}
           {MISSIONS.map((m, i) => {
@@ -388,22 +389,22 @@ export default function SignalLost() {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 10, color: C.accent, textTransform: "uppercase", letterSpacing: 2, marginBottom: 3, fontFamily: FONTS.mono }}>Mission {m.id} Â· {m.shipPart}</div>
+                      <div style={{ fontSize: 10, color: C.accent, textTransform: "uppercase", letterSpacing: 2, marginBottom: 3, fontFamily: FONTS.mono }}>Mission {m.id} · {m.shipPart}</div>
                       <div style={{ fontSize: 16, fontWeight: 700, color: C.textPrimary, marginBottom: 2, fontFamily: FONTS.heading, letterSpacing: 0.5 }}>{m.title}</div>
                       <div style={{ fontSize: 12, color: C.textMuted }}>{m.subtitle}</div>
                     </div>
-                    <div style={{ fontSize: 26, marginLeft: 12 }}>{done ? "âœ…" : m.badge}</div>
+                    <div style={{ fontSize: 26, marginLeft: 12 }}>{done ? "✅" : m.badge}</div>
                   </div>
                   <div style={{ marginTop: 10 }}>
                     <SignalBar current={earnedCount} max={totalCount} />
                     <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
-                      <span style={{ fontSize: 11, color: C.textMuted }}>{done ? "âœ“ System Restored" : "Awaiting repair..."}</span>
+                      <span style={{ fontSize: 11, color: C.textMuted }}>{done ? "✓ System Restored" : "Awaiting repair..."}</span>
                       <span style={{ fontSize: 11, color: C.textMuted }}>{earnedCount}/{totalCount} repairs</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Bug in the System card â€” clickable like missions */}
+                {/* Bug in the System card — clickable like missions */}
                 {bugAfter && (
                   <div key={bugAfter.id}
                     onClick={() => bugUnlocked && setActiveBug(bugAfter)}
@@ -422,7 +423,7 @@ export default function SignalLost() {
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                       <div style={{ flex: 1 }}>
                         <div style={{ fontSize: 10, color: passedBugs[bugAfter.id] ? C.alien : bugUnlocked ? C.red : C.textMuted, textTransform: "uppercase", letterSpacing: 2, marginBottom: 3, fontFamily: FONTS.mono }}>
-                          {bugUnlocked ? (passedBugs[bugAfter.id] ? "âœ“ Bug Crushed" : "âš¡ " + bugAfter.subtitle) : "ðŸ”’ " + bugAfter.subtitle}
+                          {bugUnlocked ? (passedBugs[bugAfter.id] ? "✓ Bug Crushed" : "⚡ " + bugAfter.subtitle) : "🔒 " + bugAfter.subtitle}
                         </div>
                         <div style={{ fontSize: 16, fontWeight: 700, color: C.textPrimary, fontFamily: FONTS.heading, letterSpacing: 0.5 }}>{bugAfter.title}</div>
                         <div style={{ fontSize: 12, color: C.textMuted, marginTop: 2 }}>
@@ -430,7 +431,7 @@ export default function SignalLost() {
                         </div>
                       </div>
                       <div style={{ fontSize: 28, marginLeft: 12 }}>
-                        {passedBugs[bugAfter.id] ? "âœ…" : bugUnlocked ? "ðŸ›" : "ðŸ”’"}
+                        {passedBugs[bugAfter.id] ? "✅" : bugUnlocked ? "🐛" : "🔒"}
                       </div>
                     </div>
                   </div>
@@ -442,20 +443,20 @@ export default function SignalLost() {
           {/* certificate */}
           {allMissionsDone && (
             <div onClick={() => setShowCert(true)} style={{ background: `linear-gradient(135deg, ${C.accent}18, ${C.alien}18)`, border: `2px solid ${C.alien}`, borderRadius: 14, padding: 18, cursor: "pointer", textAlign: "center", boxShadow: C.glowAlien, marginTop: 8 }}>
-              <div style={{ fontSize: 32, marginBottom: 6 }}>ðŸ†</div>
+              <div style={{ fontSize: 32, marginBottom: 6 }}>🏆</div>
               <div style={{ color: C.alien, fontWeight: 800, fontSize: 13, letterSpacing: 2, fontFamily: FONTS.heading }}>CLAIM YOUR CERTIFICATE</div>
               <div style={{ color: C.textMuted, fontSize: 12, marginTop: 4 }}>All systems restored!</div>
             </div>
           )}
 
-          <p style={{ color: C.textMuted, fontSize: 12, marginTop: 20, textAlign: "center" }}>More ship systems coming ðŸ›¸</p>
+          <p style={{ color: C.textMuted, fontSize: 12, marginTop: 20, textAlign: "center" }}>More ship systems coming 🛸</p>
 
           {/* reset */}
           <button onClick={async () => {
             try { await window.storage.delete("signal-lost-progress"); } catch(e) {}
             setPassedChallenges({}); setSignalPower(0); setShipParts([]); setDailyDone(false); setPassedBugs({});
           }} style={{ marginTop: 12, background: "transparent", border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 16px", fontSize: 11, cursor: "pointer", display: "block", margin: "12px auto 0" }}>
-            â†º Reset Progress
+            ↺ Reset Progress
           </button>
         </div>
       </div>
@@ -467,7 +468,7 @@ export default function SignalLost() {
         <div style={{ padding: "24px 16px 0" }}>
           <div style={{ fontSize: 10, color: C.alien, textTransform: "uppercase", letterSpacing: 3, fontFamily: FONTS.mono, marginBottom: 4 }}>Open Channel</div>
           <h2 style={{ fontFamily: FONTS.heading, color: C.alien, fontSize: 22, margin: "0 0 8px", letterSpacing: 2, textShadow: `0 0 12px ${C.alien}88` }}>FREE TRANSMISSION</h2>
-          <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 16, lineHeight: 1.6 }}>No rules. No challenges. Just code whatever you want and see it appear live. ðŸ›¸</p>
+          <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 16, lineHeight: 1.6 }}>No rules. No challenges. Just code whatever you want and see it appear live. 🛸</p>
         </div>
         <FreestyleInline />
       </div>
@@ -479,7 +480,7 @@ export default function SignalLost() {
         <div style={{ padding: "24px 16px 0" }}>
           <div style={{ fontSize: 10, color: C.accent, textTransform: "uppercase", letterSpacing: 3, fontFamily: FONTS.mono, marginBottom: 4 }}>Transmission Codex</div>
           <h2 style={{ fontFamily: FONTS.heading, color: C.accent, fontSize: 22, margin: "0 0 8px", letterSpacing: 2 }}>FULL CHEAT SHEET</h2>
-          <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 16, lineHeight: 1.6 }}>Every tag, attribute, and special character. Searchable. Always here when you need it. ðŸ“¡</p>
+          <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 16, lineHeight: 1.6 }}>Every tag, attribute, and special character. Searchable. Always here when you need it. 📡</p>
         </div>
         <CodexInline />
       </div>
@@ -491,7 +492,7 @@ export default function SignalLost() {
         <div style={{ padding: "24px 16px 0" }}>
           <div style={{ fontSize: 10, color: C.gold, textTransform: "uppercase", letterSpacing: 3, fontFamily: FONTS.mono, marginBottom: 4 }}>Alien Research Lab</div>
           <h2 style={{ fontFamily: FONTS.heading, color: C.gold, fontSize: 22, margin: "0 0 8px", letterSpacing: 2 }}>MISTAKES MUSEUM</h2>
-          <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 16, lineHeight: 1.6 }}>Even the best human coders make these mistakes. Study them so you don't have to. ðŸ‘¾</p>
+          <p style={{ color: C.textMuted, fontSize: 14, marginBottom: 16, lineHeight: 1.6 }}>Even the best human coders make these mistakes. Study them so you don't have to. 👾</p>
         </div>
         <MuseumInline />
       </div>

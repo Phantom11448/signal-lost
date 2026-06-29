@@ -1,6 +1,7 @@
-﻿import React from 'react';
+import React from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
+import { Stars } from './Stars.js';
 
 function Certificate({ signalPower, parts, onClose }) {
   return (
@@ -13,7 +14,7 @@ function Certificate({ signalPower, parts, onClose }) {
         padding: 32, maxWidth: 440, width: "100%", textAlign: "center",
         boxShadow: C.glowAlien,
       }}>
-        <div style={{ fontSize: 56, marginBottom: 12 }}>ðŸ›¸</div>
+        <div style={{ fontSize: 56, marginBottom: 12 }}>🛸</div>
         <div style={{ color: C.accent, fontSize: 11, letterSpacing: 4, textTransform: "uppercase", marginBottom: 8 }}>Official Transmission</div>
         <h2 style={{ color: C.alien, fontSize: 24, margin: "0 0 8px", fontWeight: 900, fontFamily: FONTS.heading, letterSpacing: 2 }}>SIGNAL RESTORED</h2>
         <p style={{ color: C.textMuted, margin: "0 0 24px", lineHeight: 1.6 }}>
@@ -31,7 +32,7 @@ function Certificate({ signalPower, parts, onClose }) {
         </div>
         <div style={{ background: C.alienDim, border: `1px solid ${C.alien}44`, borderRadius: 10, padding: "10px 16px", marginBottom: 20 }}>
           <p style={{ color: C.alien, margin: 0, fontSize: 12, letterSpacing: 1 }}>
-            "One small tag for an alien, one giant webpage for alienkind." ðŸŒŒ
+            "One small tag for an alien, one giant webpage for alienkind." 🌌
           </p>
         </div>
         <button onClick={onClose} style={{ background: C.alien, color: C.bg, border: "none", borderRadius: 10, padding: "12px 28px", fontWeight: 800, fontSize: 11, cursor: "pointer", letterSpacing: 2, fontFamily: FONTS.heading }}>

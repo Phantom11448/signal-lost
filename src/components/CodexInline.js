@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { CHEAT_SHEET } from '../data/cheatSheet.js';
@@ -13,7 +13,7 @@ function CodexInline() {
 
   return (
     <div style={{ padding: "0 16px" }}>
-      <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="ðŸ” Search tags, attributes, anything..."
+      <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="🔍 Search tags, attributes, anything..."
         style={{ width: "100%", boxSizing: "border-box", background: C.card, color: C.textPrimary, border: `1px solid ${C.accent}44`, borderRadius: 10, padding: "10px 14px", fontFamily: FONTS.body, fontSize: 14, outline: "none", marginBottom: 12 }} />
       {!search && (
         <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 8, marginBottom: 12 }}>
@@ -40,7 +40,7 @@ function CodexInline() {
         ))}
         {filtered.length === 0 && <div style={{ padding: 24, textAlign: "center", color: C.textMuted }}>Nothing found for "{search}"</div>}
       </div>
-      <p style={{ color: C.textMuted, fontSize: 11, textAlign: "center", marginTop: 16 }}>~30 tags cover 95% of all webpages ever written ðŸ›¸</p>
+      <p style={{ color: C.textMuted, fontSize: 11, textAlign: "center", marginTop: 16 }}>~30 tags cover 95% of all webpages ever written 🛸</p>
     </div>
   );
 }

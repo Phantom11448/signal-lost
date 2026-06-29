@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { WIREFRAME_SECTIONS } from '../data/tagReference.js';
@@ -9,7 +9,7 @@ function PageWireframe() {
 
   return (
     <div style={{ margin: "16px 0" }}>
-      <p style={{ color: C.textMuted, fontSize: 12, margin: "0 0 10px" }}>ðŸ‘† Tap any section to see what goes inside it</p>
+      <p style={{ color: C.textMuted, fontSize: 12, margin: "0 0 10px" }}>👆 Tap any section to see what goes inside it</p>
 
       {/* wireframe */}
       <div style={{ border: `2px solid ${C.border}`, borderRadius: 10, overflow: "hidden", marginBottom: 12 }}>

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { CodeModal } from './CodeModal.js';
@@ -21,7 +21,7 @@ function CodeBlock({ code }) {
         background: C.surface, border: `1px solid ${C.accent}44`,
         color: C.accent, borderRadius: 5, padding: "2px 7px",
         fontSize: 10, cursor: "pointer", letterSpacing: 1,
-      }}>â›¶ FULL</button>
+      }}>⛶ FULL</button>
       {showModal && <CodeModal code={code} onClose={() => setShowModal(false)} />}
     </div>
   );

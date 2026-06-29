@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { C } from '../constants/colors.js';
 import { FONTS } from '../constants/fonts.js';
 import { FEEDBACK, ALIEN_BULLETS } from '../constants/feedback.js';
@@ -104,7 +104,7 @@ function ChallengeCard({ challenge, onPass, alreadyDone }) {
             onClick={() => { setVal(""); setStatus("idle"); setFeedbackMsg(""); setAttempts(0); setShowWalkthrough(false); setWalkthroughStep(0); }}
             title="Reset challenge"
             style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: "50%", width: 26, height: 26, fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", padding: 0, lineHeight: 1 }}
-          >â†º</button>
+          >↺</button>
         </div>
       </div>
 
@@ -121,7 +121,7 @@ function ChallengeCard({ challenge, onPass, alreadyDone }) {
               setTimeout(() => { e.target.selectionStart = e.target.selectionEnd = start + 2; }, 0);
             }
           }}
-          placeholder="// enter transmission code hereâ€¦"
+          placeholder="// enter transmission code here…"
           disabled={status === "pass"}
           style={{
             width: "100%", boxSizing: "border-box", height: 80,
@@ -140,7 +140,7 @@ function ChallengeCard({ challenge, onPass, alreadyDone }) {
       {/* tiny mistakes reminder */}
       {attempts >= 2 && status !== "pass" && (
         <div style={{ background: C.surface, border: `1px solid ${C.accent}33`, borderRadius: 8, padding: "8px 12px", marginBottom: 10 }}>
-          <p style={{ color: C.accent, margin: "0 0 4px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>âš ï¸ Transmission Interference</p>
+          <p style={{ color: C.accent, margin: "0 0 4px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>⚠️ Transmission Interference</p>
           <p style={{ color: C.textMuted, margin: 0, fontSize: 12, lineHeight: 1.5 }}>
             In code, ONE wrong character can break everything. Check for: a missing <code style={{ background: C.tagBg, color: C.tagText, padding: "1px 4px", borderRadius: 3 }}>"</code> quote, an extra space, a missing <code style={{ background: C.tagBg, color: C.tagText, padding: "1px 4px", borderRadius: 3 }}>&gt;</code>, or a typo in the tag name.
           </p>
@@ -149,14 +149,14 @@ function ChallengeCard({ challenge, onPass, alreadyDone }) {
 
       {status === "fail" && feedbackMsg && (
         <div style={{ background: C.redDim, border: `1px solid ${C.red}44`, borderRadius: 8, padding: "8px 12px", marginBottom: 10 }}>
-          <p style={{ color: C.red, margin: 0, fontSize: 13 }}>âŒ {feedbackMsg}</p>
+          <p style={{ color: C.red, margin: 0, fontSize: 13 }}>❌ {feedbackMsg}</p>
         </div>
       )}
 
       {hint && status !== "pass" && (
         <div style={{ background: C.goldDim, border: `1px solid ${C.gold}44`, borderRadius: 8, padding: "8px 12px", marginBottom: 10 }}>
           <p style={{ color: C.gold, margin: 0, fontSize: 13 }}>
-            ðŸ“¡ {attempts === 1 ? "Signal Nudge" : attempts === 2 ? "Hint Beam" : "Full Transmission"}: {hint}
+            📡 {attempts === 1 ? "Signal Nudge" : attempts === 2 ? "Hint Beam" : "Full Transmission"}: {hint}
           </p>
         </div>
       )}
@@ -164,7 +164,7 @@ function ChallengeCard({ challenge, onPass, alreadyDone }) {
       {attempts >= 1 && status !== "pass" && !showWalkthrough && (
         <button onClick={() => { setShowWalkthrough(true); setWalkthroughStep(0); }}
           style={{ background: "transparent", border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 8, padding: "6px 14px", fontSize: 12, cursor: "pointer", marginBottom: 10, display: "block" }}>
-          ðŸ†˜ Lost in space â€” walk me through it
+          🆘 Lost in space — walk me through it
         </button>
       )}
 
@@ -175,24 +175,24 @@ function ChallengeCard({ challenge, onPass, alreadyDone }) {
           <div style={{ display: "flex", gap: 8 }}>
             {walkthroughStep > 0 && (
               <button onClick={() => setWalkthroughStep((s) => s - 1)}
-                style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 7, padding: "5px 12px", fontSize: 12, cursor: "pointer" }}>â† Back</button>
+                style={{ background: C.surface, border: `1px solid ${C.border}`, color: C.textMuted, borderRadius: 7, padding: "5px 12px", fontSize: 12, cursor: "pointer" }}>← Back</button>
             )}
             {walkthroughStep < challenge.walkthrough.length - 1 ? (
               <button onClick={() => setWalkthroughStep((s) => s + 1)}
-                style={{ background: C.accent, color: C.bg, border: "none", borderRadius: 7, padding: "5px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Next â†’</button>
+                style={{ background: C.accent, color: C.bg, border: "none", borderRadius: 7, padding: "5px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Next →</button>
             ) : (
               <button onClick={() => setShowWalkthrough(false)}
-                style={{ background: C.alien, color: C.bg, border: "none", borderRadius: 7, padding: "5px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Got it â€” initiate attempt! ðŸ›¸</button>
+                style={{ background: C.alien, color: C.bg, border: "none", borderRadius: 7, padding: "5px 14px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>Got it — initiate attempt! 🛸</button>
             )}
           </div>
         </div>
       )}
 
       {status === "pass" ? (
-        <p style={{ color: C.alien, margin: 0, fontWeight: 700, fontSize: 14 }}>âœ“ Signal confirmed! System repaired!</p>
+        <p style={{ color: C.alien, margin: 0, fontWeight: 700, fontSize: 14 }}>✓ Signal confirmed! System repaired!</p>
       ) : (
         <button onClick={check} style={{ background: C.accent, color: C.bg, border: "none", borderRadius: 8, padding: "9px 22px", fontWeight: 800, fontSize: 12, cursor: "pointer", letterSpacing: 2, fontFamily: FONTS.heading }}>
-          TRANSMIT â–¶
+          TRANSMIT ▶
         </button>
       )}
     </div>
