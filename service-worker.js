@@ -1,4 +1,4 @@
-const CACHE_NAME = 'signal-lost-v1';
+const CACHE_NAME = 'signal-lost-v2';
 const urlsToCache = ['/'];
 
 self.addEventListener('install', event => {
